@@ -1,0 +1,116 @@
+<h2 mat-dialog-title *ngIf="consulta === false">Editar Usuario</h2>
+<h2 mat-dialog-title *ngIf="consulta">Consultar Usuario</h2>
+<h2 mat-dialog-title *ngIf="crear">Nuevo Usuario</h2>
+
+<mat-dialog-content class="mat-typography">
+  <br />
+  <form [formGroup]="formularioCampos">
+    <mat-form-field appearance="outline" class="tamañoCampos100" [style.margin-right.px]="14">
+      <mat-label>Usuario</mat-label>
+      <input
+        matInput
+        [readonly]="consulta== true"
+        formControlName="usuario"
+        maxlength="20"
+       
+      />
+
+      <mat-error *ngIf="formularioCampos.get('usuario').hasError('required')">
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline" class="tamañoCampos100" [style.margin-right.px]="14">
+      <mat-label>Nombres</mat-label>
+      <input
+        matInput
+        [readonly]="consulta== true"
+        formControlName="nombres"
+        maxlength="100"
+       
+      />
+
+      <mat-error *ngIf="formularioCampos.get('nombres').hasError('required')">
+      </mat-error>
+    </mat-form-field>
+    <br>
+  
+  
+    <mat-form-field appearance="outline" class="tamañoCampos100" [style.margin-right.px]="14">
+      <mat-label>Apellidos</mat-label>
+      <input
+        matInput
+        [readonly]="consulta== true"
+        formControlName="apellidos"
+        maxlength="100"
+       
+      />
+
+      <mat-error *ngIf="formularioCampos.get('apellidos').hasError('required')">
+      </mat-error>
+    </mat-form-field>
+<br>
+<mat-form-field appearance="outline" class="tamañoCampos100" [style.margin-right.px]="14">
+  <mat-label>Correo</mat-label>
+  <input
+    matInput
+    [readonly]="consulta== true"
+    formControlName="correo"
+    maxlength="100"
+   
+  />
+
+  <mat-error *ngIf="formularioCampos.get('correo').hasError('required')">
+  </mat-error>
+</mat-form-field>
+<br>
+<mat-form-field appearance="outline" class="tamañoCampos100" *ngIf="datos.Accion !== 'E'" [style.margin-right.px]="14">
+  <mat-label>Estado</mat-label>
+  <mat-select
+    matInput
+    formControlName="estado"
+    [disabled]="consulta== true"
+
+    (selectionChange)="cabioAmbientes(formularioCampos.value.estado)"
+   
+  >
+  <mat-option value="Activo">Activo</mat-option>
+  <mat-option value="Inactivo">Inactivo</mat-option>
+  </mat-select>
+
+  <mat-error *ngIf="formularioCampos.get('estado').hasError('required')">
+  </mat-error>
+</mat-form-field>
+    
+<span style="margin-left: 5%" *ngIf="datos.Accion === 'E'" >Estado Activo
+<mat-slide-toggle
+  (change)="cabioAmbiente($event.checked)"
+  style="margin-left: 19%"
+  [checked]="formularioCampos.value.estado === 'Activo'"
+></mat-slide-toggle
+></span>
+    
+  </form>
+  <mat-dialog-actions align="end" style="justify-content: center !important;">
+    <button
+      mat-button
+      *ngIf="!consulta"
+      class="botonVerde"
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+      [disabled]="!formularioCampos.valid"
+      (click)="guardar()"
+    >
+      Guardar
+    </button>
+    <button
+      mat-button
+      mat-dialog-close
+      class="botonCancelar"
+      [mat-dialog-close]="false"
+    >
+    <span *ngIf="!consulta" >Cancelar</span>
+    <span *ngIf="consulta" >Regresar</span>
+      
+    </button>
+  </mat-dialog-actions>
+</mat-dialog-content>

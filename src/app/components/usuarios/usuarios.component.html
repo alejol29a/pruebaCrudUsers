@@ -1,0 +1,137 @@
+
+  
+  <div class="container">
+    <h2 class="bordeTitulos">Administración de usuarios</h2>
+    <div class="alinearFiltro">
+      <button 
+        mat-raised-button
+        class="botonVerde alineacionBoton"
+        style="background-color: green;"
+        routerLinkActive="router-link-active"
+        (click)="crear()"
+      >
+        Crear Usuario
+      </button>
+      <mat-form-field appearance="outline">
+        <mat-label>Filtros</mat-label>
+        <input matInput #input (keyup)="applyFilter($event)"  maxlength="60" />
+        <img
+          matSuffix
+          src="../../../../../assets/icons/filter.png"
+          class="colorGenericoNaranja tamañoIconos"
+          alt=""
+        />
+      </mat-form-field>
+    </div>
+  
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort class="table">
+        <ng-container matColumnDef="IdentificationNumber">
+          <th class="CabeceraTabla" scope=""
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            
+          >
+            Usuario
+          </th>
+          <td mat-cell *matCellDef="let row" class="alinearTextoTabla">
+            {{ row.usuario }}
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="NamesUser">
+          <th class="CabeceraTabla" scope=""
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            
+          >
+            Nombres
+          </th>
+          <td mat-cell *matCellDef="let row" class="alinearTextoTabla">
+            {{ row.nombres }}
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="LastNameUser">
+          <th class="CabeceraTabla" scope=""
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            
+          >
+            Apellidos
+          </th>
+          <td mat-cell *matCellDef="let row" class="alinearTextoTabla">
+            {{ row.apellidos }}
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="EmailUser">
+          <th class="CabeceraTabla" scope=""
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            
+          >
+            Correo
+          </th>
+          <td mat-cell *matCellDef="let row" class="alinearTextoTabla">
+            {{ row.correo }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="ActiveUser">
+          <th class="CabeceraTabla" scope=""
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            
+          >
+            Estado
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.estado }}</td>
+        </ng-container>
+  
+        <ng-container class="CabeceraTablaAcciones" matColumnDef="Acciones">
+          <th class="CabeceraTabla" scope="" mat-header-cell *matHeaderCellDef class="CabeceraTablaAcciones">
+           <span  >Acciones</span>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <img
+              src="../../../../../assets/icons/view.png"
+              alt=""
+              class="botonVisualizar"
+              matTooltip="Consultar"
+              (click)="consultar(element,dataSource.data.indexOf(element))"
+
+            />
+            <span class="dividerAcciones" > | </span>
+  
+            <img
+              src="../../../../../assets/icons/edit.png"
+              alt=""
+              class="botonEditar"
+              matTooltip="Editar"
+              (click)="editar(element,dataSource.data.indexOf(element))"
+            />
+  
+            
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">
+            No se encontraron resultados para la búsqueda "{{ input.value }}"
+          </td>
+        </tr>
+      </table>
+  
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+  

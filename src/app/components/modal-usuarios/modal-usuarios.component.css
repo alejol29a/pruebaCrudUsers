@@ -1,0 +1,58 @@
+.myapp-no-padding-dialog .mat-dialog-container {
+    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0),
+      0px 24px 38px 3px rgba(0, 0, 0, 0), 0px 9px 46px 8px rgba(0, 0, 0, 0);
+    background: rgba(255, 255, 255, 0.87);
+    color: rgba(0, 0, 0, 0.829);
+  }
+  ::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+    padding: 0.5em 0px !important;
+  }
+  ::ng-deep .mat-form-field-label-wrapper {
+    top: -1.4em;
+  }
+  .formularioCentrado {
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  .seccionCheckbox {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .alinearSubtitulo {
+    text-align: initial;
+    border-bottom: 1px solid cadetblue;
+  }
+  .seccion {
+    width: 100%;
+    background-color: lavender;
+  }
+  .tamañoCampos100 {
+    width: 100%;
+  }
+  
+  .contenedorBotones {
+    margin: 10px 0 30px 0;
+  }
+  
+  .contenedorBotonesStep {
+    margin: auto auto;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .botonesDerecha {
+    float: right;
+  }
+  
+  .botonesCentrados {
+    float: right;
+  }
+  
+  .dividerAcciones {
+    font-size: 35px;
+    color: #d9d9d9;
+  }  
